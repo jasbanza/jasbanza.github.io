@@ -1,0 +1,56 @@
+{
+  "title": "jasbanza",
+  "subtitle": "Osmosis & Cosmos ecosystem tools by Jason @ Osmosis Labs",
+  "githubUser": "jasbanza",
+  "repoPatterns": [
+    "^osmosis-",
+    "^cosmos-",
+    "^cctp-",
+    "^skip-",
+    "^tfm-",
+    "^autoswap-",
+    "^osmojs-"
+  ],
+  "include": [
+    "grpcwebexplorer",
+    "wallet-simulator",
+    "nodejs-rpc-proxy",
+    "crypto-payroll",
+    "cosmosmillions-rescue"
+  ],
+  "pinned": [
+    "cctp-relayer",
+    "cosmos-chain-wallet-checker",
+    "osmosis-cancel-limitorders",
+    "osmosis-tick-price",
+    "osmosis-list-pools",
+    "tfm-cancel-orders",
+    "autoswap-cancel-orders",
+    "cosmos-node-status-report",
+    "osmosis-ibc-monitor"
+  ],
+  "titleOverrides": {
+    "grpcwebexplorer": "gRPC Web Explorer",
+    "nodejs-rpc-proxy": "Node.js RPC Proxy",
+    "osmosis-toolkit-old": "Osmosis Toolkit (Legacy)",
+    "osmosis-cl-bot-demo": "Osmosis CL Bot Demo",
+    "osmosis-cl-monitor": "Osmosis CL Monitor",
+    "osmosis-cl-pool-alerts": "Osmosis CL Pool Alerts"
+  },
+  "exclude": [
+    "osmosis",
+    "osmosis-website",
+    "osmosis-utils",
+    "chain-registry",
+    "docs",
+    "relayers",
+    "assetlists",
+    "restake",
+    "cosmos-directory",
+    "Payroll-Manangement-System",
+    "kucoin-node-sdk",
+    "GaijinMarketScrapper",
+    "phishing-block-list",
+    "crypto-payroll"
+  ]
+}
