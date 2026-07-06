@@ -115,6 +115,11 @@
             color: #92400e;
         }
 
+        .cat-badge {
+            background: #e9e7fd;
+            color: #5a4fb8;
+        }
+
         .tile-description {
             color: #555;
             margin-bottom: 1.25rem;
@@ -260,7 +265,7 @@
             return `${Math.floor(months / 12)}y ago`;
         }
 
-        function renderTile(repo, config) {
+        function renderTile(repo, config, category) {
             const title = (config.titleOverrides && config.titleOverrides[repo.name]) || titleFromName(repo.name);
             const desc = repo.description || "No description available.";
             const lang = repo.language;
@@ -269,6 +274,9 @@
             const deployUrl = `https://${config.githubUser}.github.io/${repo.name}/`;
 
             let badges = "";
+            if (category) {
+                badges += `<span class="badge cat-badge">${category}</span>`;
+            }
             if (lang) {
                 const color = LANG_COLORS[lang] || "#888";
                 badges += `<span class="badge lang-badge" style="background:${color}">${lang}</span>`;
@@ -352,20 +360,33 @@
                 .filter(r => !pinnedSet.has(r.name))
                 .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
 
+            const categoryOf = {};
+            for (const [cat, names] of Object.entries(config.categories || {})) {
+                for (const name of names) categoryOf[name] = cat;
+            }
+
             let html = "";
 
             if (pinned.length) {
                 html += `<div class="section-label">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.456.734a1.75 1.75 0 012.826.504l.613 1.327a3.08 3.08 0 002.084 1.707l2.454.584c1.332.317 1.8 1.972.832 2.94L11.06 10l3.72 3.72a.749.749 0 01-1.06 1.06L10 11.06l-2.204 2.205c-.968.968-2.623.5-2.94-.832l-.584-2.454a3.08 3.08 0 00-1.707-2.084l-1.327-.613a1.75 1.75 0 01-.504-2.826L4.456.734z" fill="currentColor"/></svg>
                     Pinned</div>
-                <div class="tiles-container">${pinned.map(r => renderTile(r, config)).join("")}</div>`;
+                <div class="tiles-container">${pinned.map(r => renderTile(r, config, categoryOf[r.name])).join("")}</div>`;
             }
 
-            if (rest.length) {
-                html += `<div class="section-label" style="margin-top:0.5rem">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-6a1 1 0 00-1 1v6.708A2.486 2.486 0 017.5 9h5V1.5z" fill="currentColor"/></svg>
-                    All repositories</div>
-                <div class="tiles-container">${rest.map(r => renderTile(r, config)).join("")}</div>`;
+            const bookIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-6a1 1 0 00-1 1v6.708A2.486 2.486 0 017.5 9h5V1.5z" fill="currentColor"/></svg>`;
+
+            // Group the non-pinned repos by category (config order), unlisted repos last.
+            const groups = new Map(Object.keys(config.categories || {}).map(c => [c, []]));
+            const otherLabel = groups.size ? "Other" : "All repositories";
+            groups.set(otherLabel, []);
+            for (const r of rest) {
+                (groups.get(categoryOf[r.name]) || groups.get(otherLabel)).push(r);
+            }
+            for (const [cat, repos] of groups) {
+                if (!repos.length) continue;
+                html += `<div class="section-label" style="margin-top:0.5rem">${bookIcon} ${cat}</div>
+                <div class="tiles-container">${repos.map(r => renderTile(r, config)).join("")}</div>`;
             }
 
             document.getElementById("content").innerHTML = html;

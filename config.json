@@ -19,6 +19,7 @@
     "cosmosmillions-rescue"
   ],
   "pinned": [
+    "osmosis-create-guage-incentives",
     "cctp-relayer",
     "cosmos-chain-wallet-checker",
     "osmosis-cancel-limitorders",
@@ -30,12 +31,60 @@
     "osmosis-ibc-monitor"
   ],
   "titleOverrides": {
+    "osmosis-create-guage-incentives": "Osmosis Create Gauge Incentives",
     "grpcwebexplorer": "gRPC Web Explorer",
     "nodejs-rpc-proxy": "Node.js RPC Proxy",
     "osmosis-toolkit-old": "Osmosis Toolkit (Legacy)",
     "osmosis-cl-bot-demo": "Osmosis CL Bot Demo",
     "osmosis-cl-monitor": "Osmosis CL Monitor",
     "osmosis-cl-pool-alerts": "Osmosis CL Pool Alerts"
+  },
+  "categories": {
+    "Incentives & Gauges": [
+      "osmosis-create-guage-incentives",
+      "osmosis-externals-bot",
+      "osmosis-externals-data-migrator",
+      "osmosis-externals-query",
+      "osmosis-gauges-alerting-service",
+      "osmosis-gauges-api",
+      "osmosis-gauges-monitor"
+    ],
+    "Trading & Orders": [
+      "osmosis-cancel-limitorders",
+      "tfm-cancel-orders",
+      "autoswap-cancel-orders",
+      "osmosis-list-pools",
+      "osmosis-tick-price",
+      "skip-swap-exporter"
+    ],
+    "Concentrated Liquidity": [
+      "osmosis-cl-bot-demo",
+      "osmosis-cl-monitor",
+      "osmosis-cl-pool-alerts"
+    ],
+    "Monitoring & Infrastructure": [
+      "osmosis-ibc-monitor",
+      "osmosis-chainlist-monitor",
+      "cosmos-node-status-report",
+      "cosmos-relayer-monitor",
+      "cosmos-api-aggregator",
+      "nodejs-rpc-proxy"
+    ],
+    "Wallets & Recovery": [
+      "cosmos-chain-wallet-checker",
+      "wallet-simulator",
+      "osmojs-wallet",
+      "cosmos-airdrop-tracker",
+      "cosmosmillions-rescue",
+      "cctp-relayer"
+    ],
+    "Developer Tools": [
+      "grpcwebexplorer",
+      "cosmos-chain-registry-reader",
+      "osmosis-toolkit",
+      "osmosis-toolkit-old",
+      "osmosis-companion"
+    ]
   },
   "exclude": [
     "osmosis",
