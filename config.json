@@ -39,7 +39,7 @@
     "osmosis-cl-bot-demo": "Osmosis CL Bot Demo",
     "osmosis-cl-monitor": "Osmosis CL Monitor",
     "osmosis-cl-pool-alerts": "Osmosis CL Pool Alerts",
-    "cctp": "Noble → Avalanche CCTP",
+    "cctp": "Noble → EVM CCTP",
     "cctp-relayer": "CCTP Relayer (old)"
   },
   "categories": {
