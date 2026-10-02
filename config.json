@@ -19,6 +19,7 @@
     "cosmosmillions-rescue"
   ],
   "pinned": [
+    "cctp",
     "osmosis-create-guage-incentives",
     "cctp-relayer",
     "cosmos-chain-wallet-checker",
@@ -37,7 +38,9 @@
     "osmosis-toolkit-old": "Osmosis Toolkit (Legacy)",
     "osmosis-cl-bot-demo": "Osmosis CL Bot Demo",
     "osmosis-cl-monitor": "Osmosis CL Monitor",
-    "osmosis-cl-pool-alerts": "Osmosis CL Pool Alerts"
+    "osmosis-cl-pool-alerts": "Osmosis CL Pool Alerts",
+    "cctp": "Noble → Avalanche CCTP",
+    "cctp-relayer": "CCTP Relayer (old)"
   },
   "categories": {
     "Incentives & Gauges": [
@@ -76,7 +79,8 @@
       "osmojs-wallet",
       "cosmos-airdrop-tracker",
       "cosmosmillions-rescue",
-      "cctp-relayer"
+      "cctp-relayer",
+      "cctp"
     ],
     "Developer Tools": [
       "grpcwebexplorer",
